@@ -18,7 +18,7 @@ Build:
     - docker --version
     - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPOSITORY
     - echo "Building image..."
-    - docker build --pull --file ./Dockerfile --tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+    - docker build --pull --file ./Dockerfile --tag $ECR_REPOSITORY/$IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
     - echo "Pushing image..."
     - docker push $ECR_REPOSITORY/$IMAGE_NAME:$CI_COMMIT_SHORT_SHA
     - docker push $ECR_REPOSITORY/$IMAGE_NAME:latest
