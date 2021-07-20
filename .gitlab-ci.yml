@@ -1,0 +1,24 @@
+stages:
+  - Build
+
+variables:
+  ECR_REPOSITORY: "public.ecr.aws/luminsports"
+  IMAGE_NAME: "nginx-h5bp"
+
+Build:
+  stage: Build
+  image:
+    name: public.ecr.aws/bitnami/aws-cli:latest
+    entrypoint: [ "/bin/sh" ]
+  services:
+    - docker:18.09.7-dind
+  script:
+    - aws --version
+    - docker --version
+    - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPOSITORY
+    - echo "Building image..."
+    - docker build --pull --file $VERSION_TAG/Dockerfile --tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+    - echo "Pushing image..."
+    - docker push $ECR_REPOSITORY/$IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $ECR_REPOSITORY/$IMAGE_NAME:latest
+    - cat .docker
