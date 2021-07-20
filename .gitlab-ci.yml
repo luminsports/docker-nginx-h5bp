@@ -7,10 +7,12 @@ variables:
 
 Build:
   stage: Build
-  image: illagrenan/awscli-docker
+  image: docker:latest
   services:
-    - docker:18.09.7-dind
+    - docker:dind
   script:
+    - apk add --no-cache curl jq python py-pip
+    - pip install awscli
     - aws --version
     - docker --version
     - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPOSITORY
