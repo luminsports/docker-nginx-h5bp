@@ -11,8 +11,9 @@ Build:
   services:
     - docker:dind
   script:
-    - apk add --no-cache curl jq python py-pip
-    - pip install awscli
+    - apk add --no-cache python3
+    - python3 -m ensurepip
+    - pip3 install --no-cache awscli
     - aws --version
     - docker --version
     - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPOSITORY
