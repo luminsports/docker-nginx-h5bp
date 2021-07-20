@@ -7,7 +7,7 @@ variables:
 
 Build:
   stage: Build
-  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: illagrenan/awscli-docker
   services:
     - docker:18.09.7-dind
   script:
@@ -18,5 +18,4 @@ Build:
     - docker build --pull --file $VERSION_TAG/Dockerfile --tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
     - echo "Pushing image..."
     - docker push $ECR_REPOSITORY/$IMAGE_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $ECR_REPOSITORY/$IMAGE_NAME:latest
-    - cat .docker
+    - docker push $ECR_REPOSITORY/$IMAGE_NAME:latest=
