@@ -2,7 +2,7 @@ name: Publish Docker image
 
 on:
   push:
-    branches: [master, main]
+    branches: [main]
 
 jobs:
   push_to_registry:
@@ -12,8 +12,11 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.4.1
+
       - name: Login to Public ECR
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2.1.0
         with:
           registry: public.ecr.aws
           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -23,7 +26,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4.3.0
         with:
           tags: |
             type=ref,event=branch
@@ -32,7 +35,7 @@ jobs:
           images: public.ecr.aws/luminsports/nginx-h5bp
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4.0.0
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
