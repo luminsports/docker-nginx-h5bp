@@ -26,12 +26,13 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v4.3.0
+        uses: docker/metadata-action@v4.4.0
         with:
           tags: |
             type=ref,event=branch
             type=ref,event=tag
             type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
           images: public.ecr.aws/luminsports/nginx-h5bp
 
       - name: Build and push Docker image
