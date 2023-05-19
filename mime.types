@@ -39,9 +39,12 @@ types {
     audio/x-realaudio                     ra;
     audio/x-wav                           wav;
     audio/x-matroska                      mka;
+    image/apng                            apng;
+    image/avif                            avif avifs;
     image/bmp                             bmp;
     image/gif                             gif;
     image/jpeg                            jpeg jpg;
+    image/jxl                             jxl;
     image/jxr                             jxr hdp wdp;
     image/png                             png;
     image/svg+xml                         svg svgz;
