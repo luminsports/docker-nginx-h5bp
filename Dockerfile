@@ -1,8 +1,9 @@
 ARG NGINX_VERSION=1.24.0
 
-FROM nginx:$NGINX_VERSION-alpine as builder
+FROM --platform=${BUILDPLATFORM:-linux/amd64} nginx:$NGINX_VERSION-alpine as builder
 
-ARG NGINX_VERSION=1.24.0
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 ARG HEADERS_MORE_VERSION=0.34
 
 RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main nginx-mod-http-headers-more \
@@ -30,7 +31,7 @@ RUN cd /opt \
     && apk del .build-deps \
     && rm -rf /usr/share/man/* /usr/includes/* /var/cache/apk/* /tmp/*
 
-FROM nginx:$NGINX_VERSION-alpine
+FROM --platform=${BUILDPLATFORM:-linux/amd64} nginx:$NGINX_VERSION-alpine
 
 COPY --from=builder --chmod=644 /opt/nginx/objs/ngx_http_headers_more_filter_module.so /usr/lib/nginx/modules/ngx_http_headers_more_filter_module.so
 COPY ./default.conf /etc/nginx/conf.d/default.conf
