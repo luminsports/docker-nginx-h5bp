@@ -25,7 +25,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.4.1
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -35,7 +35,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5.4.0
+        uses: docker/metadata-action@v5
         with:
           tags: |
             type=ref,event=branch
@@ -45,7 +45,7 @@ jobs:
           images: public.ecr.aws/luminsports/nginx-h5bp
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5.0.0
+        uses: docker/build-push-action@v5
         with:
           push: true
           platforms: linux/amd64,linux/arm64
