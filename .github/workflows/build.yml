@@ -2,6 +2,7 @@ name: Publish Docker image
 
 permissions:
   id-token: write
+  contents: read
 
 on:
   push:
