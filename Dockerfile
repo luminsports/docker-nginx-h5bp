@@ -1,6 +1,6 @@
 ARG NGINX_VERSION=1.31
 
-FROM nginx:$NGINX_VERSION-alpine as builder
+FROM nginx:$NGINX_VERSION-alpine AS builder
 
 ARG HEADERS_MORE_VERSION=0.39
 
