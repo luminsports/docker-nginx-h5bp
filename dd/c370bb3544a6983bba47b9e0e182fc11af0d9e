@@ -1,0 +1,30 @@
+.gitignore
+  s_b8cf2404efef48::t_9790d803c566df 1-13
+Dockerfile
+  s_13984286a2d55d::t_1e3b8da1d83111 1
+  s_13984286a2d55d::t_e7491c81ab2da3 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ddc370bb3544a6983bba47b9e0e182fc11af0d9e",
+  "prompts": {},
+  "sessions": {
+    "s_13984286a2d55d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c65f-36a9-78f1-a93f-8d7ac45c7f5e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Ryan Brereton <ryan@luminsports.com>"
+    },
+    "s_b8cf2404efef48": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fed85-3672-7e71-9c58-7c13b93d37ee",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Ryan Brereton <ryan@luminsports.com>"
+    }
+  }
+}
