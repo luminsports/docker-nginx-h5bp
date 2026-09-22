@@ -1,11 +1,10 @@
-ARG NGINX_VERSION=1.31
+ARG NGINX_VERSION=1.31.6
 
 FROM nginx:$NGINX_VERSION-alpine AS builder
 
 ARG HEADERS_MORE_VERSION=0.39
 
-RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main nginx-mod-http-headers-more \
-    && apk add --no-cache --virtual .build-deps \
+RUN apk add --no-cache --virtual .build-deps \
         gcc \
         make \
         libc-dev \
