@@ -1,0 +1,19 @@
+.github/workflows/build.yml
+  s_73a28210314f3e::t_362effaa8452d9 17,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "22738237dba70807f412f6ba0e504bb46a2607a9",
+  "prompts": {},
+  "sessions": {
+    "s_73a28210314f3e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c7e1-9e5a-7db3-9f71-68bc14cd1883",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Ryan Brereton <ryan@luminsports.com>"
+    }
+  }
+}
